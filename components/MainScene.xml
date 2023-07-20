@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="MainScene" extends="Scene">
+  <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
+  <children>
+    <Poster
+      translation="[0,0]"
+      id="slider"
+      uri="pkg:/assets/images/placeholder1.png"
+    />
+    <bottomBar
+      translation="[0,640]"
+      id="bottomBar"
+    />
+  </children>
+</component>

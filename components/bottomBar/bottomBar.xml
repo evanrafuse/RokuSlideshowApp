@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="bottomBar" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
+    <interface>
+          <field id="slideTitle" type="String" onChange="titleChanged"/>
+    </interface>
+    <children>
+      <Poster
+        translation="[0,0]"
+        id="background"
+        uri="pkg:/assets/slides/bottomBarBackground.png"
+      />
+      <Label
+        translation="[20,30]"
+        id="timeLbl"
+        font="font:SmallBoldSystemFont"
+        color="0x617EFF"
+        text="Time Here"
+      />
+      <Label
+        translation="[500,30]"
+        id="titleLbl"
+        font="font:SmallBoldSystemFont"
+        color="0x617EFF"
+        text="Slide Title Here"
+      />
+      <Label
+        translation="[1080,30]"
+        id="weatherLbl"
+        font="font:SmallBoldSystemFont"
+        color="0x617EFF"
+        text="Weather Here"
+      />
+    </children>
+</component>
