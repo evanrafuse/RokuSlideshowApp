@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="bottomBar" extends="Group">
-    <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
+<component name="BottomBar" extends="Group">
+    <script type="text/brightscript" uri="pkg:/components/BottomBar/BottomBar.brs"/>
     <interface>
           <field id="slideTitle" type="String" onChange="titleChanged"/>
     </interface>
     <children>
-      <Poster
-        translation="[0,0]"
-        id="background"
-        uri="pkg:/assets/slides/bottomBarBackground.png"
-      />
       <Label
         translation="[20,30]"
         id="timeLbl"

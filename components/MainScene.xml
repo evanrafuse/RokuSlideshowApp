@@ -3,14 +3,18 @@
 <component name="MainScene" extends="Scene">
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
   <children>
-    <Poster
+    <Slider
       translation="[0,0]"
       id="slider"
-      uri="pkg:/assets/images/placeholder1.png"
     />
-    <bottomBar
+    <BottomBar
       translation="[0,640]"
       id="bottomBar"
+    />
+    <Timer
+      id="slideTimer"
+      repeat="true"
+      duration="5"
     />
   </children>
 </component>

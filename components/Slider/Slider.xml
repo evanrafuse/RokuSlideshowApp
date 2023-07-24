@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="Slider" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/Slider/Slider.brs"/>
+  <interface>
+    <field id="currentSlide" type="integer" value="0" />
+    <field id="slideTitle" type="string" value="" />
+    <function name="incrementSlide" />
+  </interface>
+  <children>
+    <Poster
+      translation="[0,0]"
+      id="poster"
+      uri="pkg:/assets/slides/placeholder1.png"
+    />
+    <!-- <Animation id="carouselAnim">
+      <Vector2DFieldInterpolator id="carouselSlideAnim" />
+    </Animation> -->
+  </children>
+</component>

@@ -1,1 +1,16 @@
-
+{
+  "slides":[
+    {
+      "title":"Placeholder 1",
+      "filename":"placeholder1.png"
+    },
+    {
+      "title":"Placeholder 2",
+      "filename":"placeholder2.png"
+    },
+    {
+      "title":"Placeholder 3",
+      "filename":"placeholder3.png"
+    }
+  ]
+}

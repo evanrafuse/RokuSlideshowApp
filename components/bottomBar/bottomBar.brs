@@ -1,5 +1,5 @@
 function init()
- ? "Initializing componentTemplate"
+ ? "Initializing Bottom Bar"
 end function
 
 sub titleChanged()
