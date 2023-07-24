@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="BottomBar" extends="Group">
-    <script type="text/brightscript" uri="pkg:/components/BottomBar/BottomBar.brs"/>
-    <interface>
-          <field id="slideTitle" type="String" onChange="titleChanged"/>
-    </interface>
-    <children>
-      <Label
-        translation="[20,30]"
-        id="timeLbl"
-        font="font:SmallBoldSystemFont"
-        color="0x617EFF"
-        text="Time Here"
-      />
-      <Label
-        translation="[500,30]"
-        id="titleLbl"
-        font="font:SmallBoldSystemFont"
-        color="0x617EFF"
-        text="Slide Title Here"
-      />
-      <Label
-        translation="[1080,30]"
-        id="weatherLbl"
-        font="font:SmallBoldSystemFont"
-        color="0x617EFF"
-        text="Weather Here"
-      />
-    </children>
+<component name="BottomBar" extends="LayoutGroup">
+  <script type="text/brightscript" uri="pkg:/components/BottomBar/BottomBar.brs"/>
+  <interface>
+    <field id="slideTitle" type="String" onChange="titleChanged"/>
+    <function name="updateTime"/>
+  </interface>
+  <children>
+    <MultiStyleLabel
+      id="timeLbl"
+      color="0x617EFF"
+      numLines="2"
+      lineSpacing="1.0"
+      horizAlign="center"
+      vertAlign="center"
+      text="Monday, January 1&#10;0:00 am"
+      width="200"
+      height="80"
+    />
+    <Label
+      id="titleLbl"
+      color="0x617EFF"
+      horizAlign="center"
+      vertAlign="center"
+      text="Slide Title Here"
+      width="880"
+      height="80"
+    />
+    <Label
+      id="weatherLbl"
+      color="0x617EFF"
+      horizAlign="center"
+      vertAlign="center"
+      text="Weather Here"
+      width="200"
+      height="80"
+    />
+  </children>
 </component>

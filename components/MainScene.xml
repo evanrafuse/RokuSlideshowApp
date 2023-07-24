@@ -10,11 +10,17 @@
     <BottomBar
       translation="[0,640]"
       id="bottomBar"
+      layoutDirection="horiz"
     />
     <Timer
       id="slideTimer"
       repeat="true"
       duration="5"
+    />
+    <Timer
+      id="clockTimer"
+      repeat="true"
+      duration="60"
     />
   </children>
 </component>

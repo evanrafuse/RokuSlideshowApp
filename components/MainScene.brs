@@ -1,24 +1,30 @@
 function init()
-  ? "IN MAINSCENE: Initiating Main Secene"
   m.slider = m.top.FindNode("slider")
   m.bottomBar = m.top.FindNode("bottomBar")
   m.slideTimer = m.top.FindNode("slideTimer")
+  m.clockTimer = m.top.FindNode("clockTimer")
 
   m.slider.ObserveField("slideTitle", "changeTitle")
 
-  m.slideTimer.ObserveField("fire", "changeSlide")
+  m.slideTimer.ObserveField("fire", "sliderPing")
   m.slideTimer.control = "start"
+
+  m.clockTimer.ObserveField("fire", "clockPing")
+  m.clockTimer.control = "start"
 
   m.top.setFocus(true)
 end function
 
-sub changeSlide()
+sub sliderPing()
   m.slider.callFunc("incrementSlide")
 end sub
 
+sub clockPing()
+  m.bottomBar.callFunc("updateTime")
+end sub
+
 sub changeTitle(obj)
-  wut = obj.getData()
-  ? "slideTitle is: "; wut
+  m.bottomBar.slideTitle = obj.getData()
 end sub
 
 function OnKeyEvent(key, press) as Boolean
