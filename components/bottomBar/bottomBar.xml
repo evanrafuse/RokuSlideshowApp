@@ -7,26 +7,44 @@
     <function name="updateTime"/>
   </interface>
   <children>
-    <MultiStyleLabel
-      id="timeLbl"
-      color="0x617EFF"
-      numLines="2"
-      lineSpacing="1.0"
-      horizAlign="center"
-      vertAlign="center"
-      text="Monday, January 1&#10;0:00 am"
-      width="200"
-      height="80"
-    />
+  <LayoutGroup
+      id="dateGrp"
+      layoutDirection="vert"
+    >
+      <MultiStyleLabel
+        id="timeLbl"
+        color="0x617EFF"
+        numLines="2"
+        lineSpacing="1.0"
+        horizAlign="center"
+        vertAlign="bottom"
+        text="0:00PM"
+        height="40"
+        width="300"
+      />
+      <MultiStyleLabel
+        id="dateLbl"
+        color="0x617EFF"
+        numLines="2"
+        lineSpacing="1.0"
+        horizAlign="center"
+        vertAlign="top"
+        text="Monday, January 1"
+        width="300"
+        height="40"
+      />
+    </LayoutGroup>
     <Label
       id="titleLbl"
-      color="0x617EFF"
+      color="#FFFFFF"
       horizAlign="center"
       vertAlign="center"
       text="Slide Title Here"
-      width="880"
+      width="680"
       height="80"
-    />
+    >
+      <Font role = "font" uri = "pkg:/assets/fonts/Gotham-Medium.otf" size = "20" />
+    </Label>
     <LayoutGroup
       id="weatherGrp"
       layoutDirection="horiz"
@@ -36,16 +54,16 @@
         color="0x617EFF"
         numLines="2"
         lineSpacing="1.0"
-        horizAlign="center"
+        horizAlign="right"
         vertAlign="center"
         text="26C&#10;Clear"
-        width="80"
         height="80"
+        width="220"
       />
       <Poster
         id="weatherPoster"
-        width="80"
         height="80"
+        width="80"
         uri="pkg:/assets/images/placeholderIcon.png"
       />
     </LayoutGroup>
