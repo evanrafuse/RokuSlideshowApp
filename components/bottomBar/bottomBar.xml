@@ -27,14 +27,27 @@
       width="880"
       height="80"
     />
-    <Label
-      id="weatherLbl"
-      color="0x617EFF"
-      horizAlign="center"
-      vertAlign="center"
-      text="Weather Here"
-      width="200"
-      height="80"
-    />
+    <LayoutGroup
+      id="weatherGrp"
+      layoutDirection="horiz"
+    >
+      <MultiStyleLabel
+        id="weatherLbl"
+        color="0x617EFF"
+        numLines="2"
+        lineSpacing="1.0"
+        horizAlign="center"
+        vertAlign="center"
+        text="26C&#10;Clear"
+        width="80"
+        height="80"
+      />
+      <Poster
+        id="weatherPoster"
+        width="80"
+        height="80"
+        uri="pkg:/assets/images/placeholderIcon.png"
+      />
+    </LayoutGroup>
   </children>
 </component>
