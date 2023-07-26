@@ -7,7 +7,7 @@ function init()
   m.dateLbl.drawingStyles = {
     default: {
       "fontUri": "pkg:/assets/fonts/Gotham-Bold.otf"
-      "fontSize":30
+      "fontSize":25
       "color": "#FFFFFF"
     }
   }
