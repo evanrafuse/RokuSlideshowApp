@@ -3,9 +3,9 @@ major_version=1
 
 mm_icon_focus_sd=pkg:/images/channel-poster_sd.png
 mm_icon_focus_hd=pkg:/images/channel-poster_hd.png
-splash_screen_sd=pkg:/assets/images/splash-screen_hs.png
+splash_screen_sd=pkg:/assets/images/splash-screen_sd.png
 splash_screen_hd=pkg:/assets/images/splash-screen_hd.png
 
 splash_color=#000000
-splash_min_time=2000
+splash_min_time=1000
 
