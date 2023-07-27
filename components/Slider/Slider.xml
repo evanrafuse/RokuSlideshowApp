@@ -6,7 +6,6 @@
     <field id="currentSlide" type="integer" value="0" />
     <field id="slideTitle" type="string" value="" />
     <function name="incrementSlide" />
-    <function name="getSlides" />
   </interface>
   <children>
   <LayoutGroup
