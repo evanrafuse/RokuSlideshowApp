@@ -5,7 +5,8 @@ function init()
   m.slideCount = 0
   m.currentPos = 0
   m.nextPos = 0
-  getSlides()
+  ' getSlides()
+  ?"Test 5"
 end function
 
 sub getSlides()

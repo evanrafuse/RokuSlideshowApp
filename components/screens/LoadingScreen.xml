@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="LoadingScreen" extends="Group">
+    <children>
+      <Poster
+        id="loadingPoster"
+        uri="pkg:/assets/images/splash-screen_hd.png"
+      />
+    </children>
+</component>

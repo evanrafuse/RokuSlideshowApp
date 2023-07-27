@@ -1,36 +1,25 @@
 function init()
-  m.slider = m.top.FindNode("slider")
-  m.bottomBar = m.top.FindNode("bottomBar")
-  m.slideTimer = m.top.FindNode("slideTimer")
-  m.clockTimer = m.top.FindNode("clockTimer")
-
-  m.slider.ObserveField("slideTitle", "changeTitle")
-
-  m.slideTimer.ObserveField("fire", "sliderPing")
-  m.slideTimer.control = "start"
-
-  m.clockTimer.ObserveField("fire", "clockPing")
-  m.clockTimer.control = "start"
-
-  m.top.setFocus(true)
+  m.sliderScreen = m.top.FindNode("sliderScreen")
+  m.loadingScreen = m.top.FindNode("loadingScreen")
+  m.sliderScreen.ObserveField("screenReady", "showSlider")
+  m.sliderScreen.callFunc("buildSlider")
 end function
 
-sub sliderPing()
-  m.slider.callFunc("incrementSlide")
-end sub
-
-sub clockPing()
-  m.bottomBar.callFunc("updateTime")
-end sub
-
-sub changeTitle(obj)
-  m.bottomBar.slideTitle = obj.getData()
+sub showSlider()
+  ?"TEST 1"
+  m.top.setFocus(true)
+  m.sliderScreen.visible = "true"
+  m.loadingScreen.visible = "false"
 end sub
 
 function OnKeyEvent(key, press) as Boolean
   result = false
   if press
     ? key
+    if "OK" = key
+      m.sliderScreen.visible = "true"
+      m.loadingScreen.visible = "false"
+    end if
   end if
   return result
 end function

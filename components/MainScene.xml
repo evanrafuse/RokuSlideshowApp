@@ -3,24 +3,13 @@
 <component name="MainScene" extends="Scene">
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
   <children>
-    <Slider
-      translation="[0,0]"
-      id="slider"
+    <SliderScreen
+      id="sliderScreen"
+      visible="false"
     />
-    <BottomBar
-      translation="[0,640]"
-      id="bottomBar"
-      layoutDirection="horiz"
-    />
-    <Timer
-      id="slideTimer"
-      repeat="true"
-      duration="5"
-    />
-    <Timer
-      id="clockTimer"
-      repeat="true"
-      duration="60"
+    <LoadingScreen
+      id="loadingScreen"
+      visible="true"
     />
   </children>
 </component>

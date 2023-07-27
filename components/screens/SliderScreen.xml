@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="SliderScreen" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/screens/SliderScreen.brs"/>
+  <interface>
+    <field id="screenReady" type="bool" value="false" />
+    <function name="buildSlider"/>
+  </interface>
+  <children>
+    <Slider
+      translation="[0,0]"
+      id="slider"
+    />
+    <BottomBar
+      translation="[0,640]"
+      id="bottomBar"
+      layoutDirection="horiz"
+    />
+    <Timer
+      id="slideTimer"
+      repeat="true"
+      duration="5"
+    />
+    <Timer
+      id="clockTimer"
+      repeat="true"
+      duration="60"
+    />
+  </children>
+</component>
