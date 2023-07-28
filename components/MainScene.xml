@@ -2,6 +2,9 @@
 
 <component name="MainScene" extends="Scene">
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
+  <interface>
+    <field id="playSlides" type="bool" value="true"/>
+  </interface>
   <children>
     <Slider
       translation="[0,0]"
@@ -17,19 +20,13 @@
       translation="[0,0]"
       visible="true"
     />
+    <OptionsScreen
+      translation="[0,1440]"
+      id="optionsScreen"
+    />
     <Timer
       id="slideTimer"
       repeat="true"
-      duration="5"
-    />
-    <Timer
-      id="clockTimer"
-      repeat="true"
-      duration="60"
-    />
-    <Timer
-      id="startTimer"
-      repeat="false"
       duration="2"
     />
   </children>

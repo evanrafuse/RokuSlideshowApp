@@ -11,11 +11,6 @@
       id="refreshPoster"
       uri="pkg:/assets/images/splash-screen_hd.png"
     />
-    <Timer
-      id="refreshTimer"
-      repeat="false"
-      duration="2"
-    />
     <Animation
       id="refreshAnimIn"
       duration="0.5"
