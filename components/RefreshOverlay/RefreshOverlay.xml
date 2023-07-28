@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RefreshOverlay" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/RefreshOverlay/RefreshOverlay.brs"/>
+  <interface>
+    <function name="slideIn"/>
+    <function name="fadeOut"/>
+  </interface>
+  <children>
+    <Poster
+      id="refreshPoster"
+      uri="pkg:/assets/images/splash-screen_hd.png"
+    />
+    <Timer
+      id="refreshTimer"
+      repeat="false"
+      duration="2"
+    />
+    <Animation
+      id="refreshAnimIn"
+      duration="0.5"
+      repeat="false"
+      easeFunction="linear">
+      <Vector2DFieldInterpolator
+        id="refreshSlideAnim"
+        fieldToInterp="refreshPoster.translation"
+        key="[0.0, 1.0]"
+        keyValue="[ [0, -720], [0, 0] ]"
+        />
+    </Animation>
+    <Animation
+      id="refreshAnimOut"
+      duration="1"
+      repeat="false"
+      easeFunction="linear">
+      <FloatFieldInterpolator
+        id="refreshFadeAnim"
+        fieldToInterp="refreshPoster.opacity"
+        key="[0.0, 1.0]"
+        keyValue="[ 1.0, 0 ]"
+        />
+    </Animation>
+  </children>
+</component>

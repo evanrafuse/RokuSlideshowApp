@@ -12,6 +12,11 @@
       id="bottomBar"
       layoutDirection="horiz"
     />
+    <RefreshOverlay
+      id="refreshOverlay"
+      translation="[0,0]"
+      visible="true"
+    />
     <Timer
       id="slideTimer"
       repeat="true"
@@ -21,6 +26,11 @@
       id="clockTimer"
       repeat="true"
       duration="60"
+    />
+    <Timer
+      id="startTimer"
+      repeat="false"
+      duration="2"
     />
   </children>
 </component>

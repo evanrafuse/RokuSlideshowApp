@@ -34,10 +34,10 @@ function init()
   m.weatherTask = createObject("roSGNode", "restTask")
   m.weatherTask.observeField("response", "onWeatherResponse")
   m.weatherTask.request = {"url":url}
-  m.weatherTask.control = "RUN"
+  ' m.weatherTask.control = "RUN"
 
-  ' Set Timer
-  updateTime()
+  ' ' Set Timer
+  ' updateTime()
 end function
 
 sub titleChanged(obj)
@@ -53,8 +53,13 @@ sub updateTime()
   m.timeLbl.text = time
   m.dateLbl.text = date
   if "00" = clock.asTimeStringLoc("mm")
-    m.weatherTask.control = "RUN"
+    ' m.weatherTask.control = "RUN"
+    updateWeather()
   end if
+end sub
+
+sub updateWeather()
+  m.weatherTask.control = "RUN"
 end sub
 
 sub onWeatherResponse(obj)

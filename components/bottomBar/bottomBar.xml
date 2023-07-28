@@ -5,6 +5,7 @@
   <interface>
     <field id="slideTitle" type="String" onChange="titleChanged"/>
     <function name="updateTime"/>
+    <function name="updateWeather"/>
   </interface>
   <children>
   <LayoutGroup

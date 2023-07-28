@@ -1,16 +1,21 @@
 function init()
   m.slider = m.top.FindNode("slider")
   m.bottomBar = m.top.FindNode("bottomBar")
+  m.refreshOverlay = m.top.FindNode("refreshOverlay")
   m.slideTimer = m.top.FindNode("slideTimer")
   m.clockTimer = m.top.FindNode("clockTimer")
+  m.startTimer = m.top.FindNode("startTimer")
 
   m.slider.ObserveField("slideTitle", "changeTitle")
 
   m.slideTimer.ObserveField("fire", "sliderPing")
-  m.slideTimer.control = "start"
+  ' m.slideTimer.control = "start"
 
   m.clockTimer.ObserveField("fire", "clockPing")
   m.clockTimer.control = "start"
+
+  m.startTimer.ObserveField("fire", "startPing")
+  m.startTimer.control = "start"
 
   m.top.setFocus(true)
 end function
@@ -21,6 +26,12 @@ end sub
 
 sub clockPing()
   m.bottomBar.callFunc("updateTime")
+  m.refreshOverlay.callFunc("slideIn")
+end sub
+
+sub startPing()
+  m.refreshOverlay.callFunc("fadeOut")
+  m.slideTimer.control = "start"
 end sub
 
 sub changeTitle(obj)
