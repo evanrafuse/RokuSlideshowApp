@@ -38,3 +38,19 @@ sub incrementSlide()
   m.carouselAnim.control = "start"
   m.top.slideTitle = m.slides[m.top.currentSlide].title
 end sub
+
+sub decrementSlide()
+  if m.top.currentSlide > 0
+    m.currentPos = m.nextPos
+    m.nextPos = m.nextPos + 1280
+    m.carouselSlideAnim.keyValue = [[m.currentPos,0],[m.nextPos,0]]
+    m.top.currentSlide = m.top.currentSlide - 1
+  else
+    m.currentPos = 0
+    m.nextPos = -(m.slideCount)*1280
+    m.carouselSlideAnim.keyValue = [[m.currentPos,0],[m.nextPos,0]]
+    m.top.currentSlide = m.slideCount
+  end if
+  m.carouselAnim.control = "start"
+  m.top.slideTitle = m.slides[m.top.currentSlide].title
+end sub

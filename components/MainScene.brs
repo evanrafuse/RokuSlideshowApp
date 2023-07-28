@@ -30,7 +30,19 @@ end sub
 function OnKeyEvent(key, press) as Boolean
   result = false
   if press
-    ? key
+    if "right" = key or "fastforward" = key
+      m.slider.callFunc("incrementSlide")
+    else if "left" = key or "rewind" = key or "replay" = key
+      m.slider.callFunc("decrementSlide")
+    else if "play" = key or "OK" = key
+      if "start" = m.slideTimer.control
+        m.slideTimer.control = "stop"
+      else
+        m.slideTimer.control = "start"
+      end if
+    else if "options" = key or "play" = key
+      ' show options screen
+    end if
   end if
   return result
 end function
