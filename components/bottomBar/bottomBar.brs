@@ -34,10 +34,6 @@ function init()
   m.weatherTask = createObject("roSGNode", "restTask")
   m.weatherTask.observeField("response", "onWeatherResponse")
   m.weatherTask.request = {"url":url}
-  ' m.weatherTask.control = "RUN"
-
-  ' ' Set Timer
-  ' updateTime()
 end function
 
 sub titleChanged(obj)
@@ -45,17 +41,9 @@ sub titleChanged(obj)
   m.titleLbl.text = title
 end sub
 
-sub updateTime()
-  clock = CreateObject("roDateTime")
-  clock.ToLocalTime()
-  date = clock.asDateStringLoc("EEEE, MMMM d")
-  time = clock.asTimeStringLoc("h:mm a")
-  m.timeLbl.text = time
-  m.dateLbl.text = date
-  if "00" = clock.asTimeStringLoc("mm")
-    ' m.weatherTask.control = "RUN"
-    updateWeather()
-  end if
+sub updateTime(timeStrings)
+  m.dateLbl.text = timeStrings[0]
+  m.timeLbl.text = timeStrings[1]
 end sub
 
 sub updateWeather()

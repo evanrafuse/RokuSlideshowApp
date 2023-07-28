@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="OptionsScreen" extends="Node">
+    <script type="text/brightscript" uri="pkg:/components/OptionsScreen/OptionsScreen.brs"/>
+    <interface>
+
+    </interface>
+    <children>
+
+    </children>
+</component>
