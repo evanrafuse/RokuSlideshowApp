@@ -21,9 +21,21 @@
       visible="true"
     />
     <OptionsScreen
-      translation="[0,1440]"
+      translation="[0,720]"
       id="optionsScreen"
     />
+    <Animation
+    id="optionsAnim"
+    duration="0.5"
+    repeat="false"
+    easeFunction="linear">
+    <Vector2DFieldInterpolator
+      id="optionsSlideAnim"
+      fieldToInterp="optionsScreen.translation"
+      key="[0.0, 1.0]"
+      keyValue="[ [0, 720], [0, 0] ]"
+    />
+    </Animation>
     <Timer
       id="slideTimer"
       repeat="true"

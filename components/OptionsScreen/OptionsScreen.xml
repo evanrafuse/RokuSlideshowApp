@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<component name="OptionsScreen" extends="Node">
-    <script type="text/brightscript" uri="pkg:/components/OptionsScreen/OptionsScreen.brs"/>
-    <interface>
-
-    </interface>
-    <children>
-
-    </children>
+<component name="OptionsScreen" extends="Group">
+  <script type="text/brightscript" uri="pkg:/components/OptionsScreen/OptionsScreen.brs"/>
+  <interface>
+    <field id="optionsShowing" type="bool" value="false"/>
+    <field id="speed" type="int" value="5"/>
+    <field id="category" type="string" value="hockey"/>
+    <function name="setFocus"/>
+  </interface>
+  <children>
+    <Rectangle
+      id="backgroundPoster"
+      color="#363773"
+      width="1280"
+      height="720"
+      translation="[0,0]"
+    />
+    <LayoutGroup layoutDirection="vert" translation="[360,260]">
+    <Label
+      text="Options"
+      vertAlign="center"
+      horizAlign=""
+      height="50"
+      font="font:LargeBoldSystemFont"
+    />
+    <LayoutGroup
+      id="optionsGroup"
+      layoutDirection="horiz"
+    >
+      <ButtonGroup id="buttonList" />
+      <Group id="radioGroup">
+        <RadioButtonList id="slideSpeedList" visible="true" checkedItem="0" focusRow="0" itemSize="[200,55]">
+          <ContentNode role="content">
+            <ContentNode title="5 seconds" />
+            <ContentNode title="15 seconds" />
+            <ContentNode title="60 seconds" />
+          </ContentNode>
+        </RadioButtonList>
+        <RadioButtonList id="categoryList" visible="false" checkedItem="0" focusRow="1" itemSize="[200,55]">
+          <ContentNode role="content">
+            <ContentNode title="Hockey" />
+            <ContentNode title="Canada" />
+            <ContentNode title="Dachsund" />
+          </ContentNode>
+        </RadioButtonList>
+      </Group>
+    </LayoutGroup>
+    </LayoutGroup>
+  </children>
 </component>

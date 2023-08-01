@@ -14,7 +14,7 @@
     >
       <MultiStyleLabel
         id="timeLbl"
-        color="0x617EFF"
+        color="#FFFFFF"
         numLines="2"
         lineSpacing="1.0"
         horizAlign="center"
@@ -25,7 +25,7 @@
       />
       <MultiStyleLabel
         id="dateLbl"
-        color="0x617EFF"
+        color="#FFFFFF"
         numLines="2"
         lineSpacing="1.0"
         horizAlign="center"
@@ -52,7 +52,7 @@
     >
       <MultiStyleLabel
         id="weatherLbl"
-        color="0x617EFF"
+        color="#FFFFFF"
         numLines="2"
         lineSpacing="1.0"
         horizAlign="right"

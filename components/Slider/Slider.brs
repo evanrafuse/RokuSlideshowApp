@@ -9,9 +9,17 @@ function init()
 end function
 
 sub getSlides()
+  ' local files
   jsonAsString = ReadAsciiFile("pkg:/assets/slidelist.json")
   m.slides = ParseJson(jsonAsString).slides
   m.slideCount = m.slides.count() - 1
+
+  ' remote files
+  ' New Get Photos
+  ' m.apiKey = "&client_id=" + ParseJson(ReadAsciiFile("pkg:/assets/api_keys.json")).keys.unsplash
+  ' m.urlbase = https://api.unsplash.com/search/photos?query=
+  ' example - https://api.unsplash.com/search/photos?query=hockey&client_id=SL54WEQNAdDNChE0oGINiYiiJNmkW93gtQ2Voe7EOuk&
+
   buildSlider()
 end sub
 

@@ -3,7 +3,13 @@ function init()
   m.slider.ObserveField("slideTitle", "changeTitle")
   m.bottomBar = m.top.FindNode("bottomBar")
   m.refreshOverlay = m.top.FindNode("refreshOverlay")
+
   m.optionsScreen = m.top.FindNode("optionsScreen")
+  m.optionsAnim = m.top.FindNode("optionsAnim")
+  m.optionsSlideAnim = m.top.FindNode("optionsSlideAnim")
+  m.optionsScreen.ObserveField("optionsShowing", "animateOptions")
+  m.optionsScreen.ObserveField("speed", "setSpeed")
+  m.optionsScreen.ObserveField("category", "setCategory")
 
   m.slideTimer = m.top.FindNode("slideTimer")
   m.slideTimer.ObserveField("fire", "sliderPing")
@@ -50,6 +56,26 @@ sub changeTitle(obj)
   m.bottomBar.slideTitle = obj.getData()
 end sub
 
+sub setSpeed(obj)
+  speed = obj.getData()
+end sub
+
+sub setCategory(obj)
+  category = obj.getData()
+end sub
+
+sub animateOptions()
+  if m.optionsScreen.optionsShowing
+    m.optionsSlideAnim.keyValue = [[0,720],[0,0]]
+    m.optionsAnim.control = "start"
+    m.optionsScreen.callFunc("setFocus")
+  else
+    m.optionsSlideAnim.keyValue = [[0,0],[0,720]]
+    m.optionsAnim.control = "start"
+    m.top.setFocus(true)
+  end if
+end sub
+
 function OnKeyEvent(key, press) as Boolean
   result = false
   if press
@@ -60,8 +86,7 @@ function OnKeyEvent(key, press) as Boolean
     else if "play" = key or "OK" = key
       m.top.playSlides = NOT m.top.playSlides
     else if "options" = key or "down" = key
-      ' show options screen
-      ? "Show Options Screen!"
+      m.optionsScreen.optionsShowing = NOT m.optionsScreen.optionsShowing
     end if
   end if
   return result
