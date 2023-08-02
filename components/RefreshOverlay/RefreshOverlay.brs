@@ -7,6 +7,7 @@ function init()
   m.refreshWaitTimer = m.top.FindNode("refreshWaitTimer")
 end function
 
+' Animates the appearance of the refreshOverlay to slide in
 sub slideIn()
   m.refreshPoster.translation = [0, -720]
   m.refreshPoster.opacity = 1.0
@@ -15,6 +16,7 @@ sub slideIn()
   m.refreshWaitTimer.control = "start"
 end sub
 
+' Animates the disappearance of the refreshOverlay to fade out
 sub fadeOut()
   m.refreshAnimOut.control = "start"
 end sub
