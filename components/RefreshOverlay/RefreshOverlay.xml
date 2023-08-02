@@ -35,5 +35,10 @@
         keyValue="[ 1.0, 0 ]"
         />
     </Animation>
+    <Timer
+      id="refreshWaitTimer"
+      repeat="false"
+      duration="2"
+    />
   </children>
 </component>

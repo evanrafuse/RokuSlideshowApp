@@ -1,7 +1,12 @@
 function init()
+
   m.slider = m.top.FindNode("slider")
   m.slider.ObserveField("slideTitle", "changeTitle")
+  m.slider.ObserveField("slidesReady", "hideSplash")
+
   m.bottomBar = m.top.FindNode("bottomBar")
+  m.bottomBar.ObserveField("weatherReady", "hideSplash")
+
   m.refreshOverlay = m.top.FindNode("refreshOverlay")
 
   m.optionsScreen = m.top.FindNode("optionsScreen")
@@ -11,45 +16,22 @@ function init()
   m.optionsScreen.ObserveField("speed", "setSpeed")
   m.optionsScreen.ObserveField("category", "setCategory")
 
-  m.slideTimer = m.top.FindNode("slideTimer")
-  m.slideTimer.ObserveField("fire", "sliderPing")
-  m.slideTimer.control = "start"
+  m.refreshTimer = m.top.FindNode("refreshTimer")
+  m.refreshTimer.ObserveField("fire", "refreshPing")
 
   m.top.setFocus(true)
 end function
 
-sub sliderPing()
-  clock = CreateObject("roDateTime")
-  clock.ToLocalTime()
-  if 2 = m.slideTimer.duration
-    updateClockLabel(clock)
-    m.slideTimer.duration = 5
+sub hideSplash()
+  if m.slider.slidesReady and m.bottomBar.weatherReady
     m.refreshOverlay.callFunc("fadeOut")
-    m.slideTimer.control = "start"
-  end if
-  if 0 = clock.GetSeconds()
-    updateClockLabel(clock)
-  end if
-  if 30 = clock.GetMinutes() or 0 = clock.GetMinutes()
-    m.slideTimer.control = "stop"
-    refreshScreen()
-  end if
-  if m.top.playSlides
-    m.slider.callFunc("incrementSlide")
+    m.refreshTimer.control = "start"
   end if
 end sub
 
-sub updateClockLabel(clock)
-  date = clock.asDateStringLoc("EEEE, MMMM d")
-  time = clock.asTimeStringLoc("h:mm a")
-  m.bottomBar.callFunc("updateTime", [date, time])
-end sub
-
-sub refreshScreen()
-  m.slideTimer.duration = 2
+sub refreshPing()
   m.bottomBar.callFunc("updateWeather")
   m.refreshOverlay.callFunc("slideIn")
-  m.slideTimer.control = "start"
 end sub
 
 sub changeTitle(obj)
@@ -58,10 +40,12 @@ end sub
 
 sub setSpeed(obj)
   speed = obj.getData()
+  m.slideTimer.duration=speed
 end sub
 
 sub setCategory(obj)
   category = obj.getData()
+  m.slider.category = category
 end sub
 
 sub animateOptions()
@@ -84,7 +68,7 @@ function OnKeyEvent(key, press) as Boolean
     else if "left" = key or "rewind" = key or "replay" = key
       m.slider.callFunc("decrementSlide")
     else if "play" = key or "OK" = key
-      m.top.playSlides = NOT m.top.playSlides
+      m.slider.sliderRunning = NOT m.slider.sliderRunning
     else if "options" = key or "down" = key
       m.optionsScreen.optionsShowing = NOT m.optionsScreen.optionsShowing
     end if

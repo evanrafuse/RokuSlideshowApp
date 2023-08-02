@@ -61,7 +61,7 @@ sub categoryChange(obj)
   else if 1 = index
     m.top.category = "canada"
   else if 2 = index
-    m.top.category = "dachsund"
+    m.top.category = "dachsunds"
   end if
   m.buttonList.setFocus(true)
 end sub

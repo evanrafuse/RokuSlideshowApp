@@ -4,7 +4,11 @@
   <script type="text/brightscript" uri="pkg:/components/Slider/Slider.brs"/>
   <interface>
     <field id="currentSlide" type="integer" value="0" />
+    <field id="slideSpeed" type="integer" value="15" />
     <field id="slideTitle" type="string" value="" />
+    <field id="category" type="string" value="hockey" />
+    <field id="slidesReady" type="bool" value="false" />
+    <field id="sliderRunning" type="bool" value="false" />
     <function name="incrementSlide" />
     <function name="decrementSlide" />
   </interface>
@@ -26,5 +30,10 @@
       keyValue="[ [0, 0], [0, 0] ]"
       />
   </Animation>
+  <Timer
+    id="sliderTimer"
+    repeat="true"
+    duration="15"
+  />
   </children>
 </component>

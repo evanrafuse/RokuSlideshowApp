@@ -4,7 +4,7 @@
   <script type="text/brightscript" uri="pkg:/components/BottomBar/BottomBar.brs"/>
   <interface>
     <field id="slideTitle" type="String" onChange="titleChanged"/>
-    <function name="updateTime"/>
+    <field id="weatherReady" type="bool" value="false" />
     <function name="updateWeather"/>
   </interface>
   <children>
@@ -35,17 +35,17 @@
         height="40"
       />
     </LayoutGroup>
-    <Label
+    <MultiStyleLabel
       id="titleLbl"
       color="#FFFFFF"
+      numLines="2"
+      lineSpacing="1.0"
       horizAlign="center"
       vertAlign="center"
-      text=""
+      text="Photo Description"
       width="680"
       height="80"
-    >
-      <Font role = "font" uri = "pkg:/assets/fonts/Gotham-Medium.otf" size = "20" />
-    </Label>
+    />
     <LayoutGroup
       id="weatherGrp"
       layoutDirection="horiz"
@@ -68,5 +68,10 @@
         uri="pkg:/assets/images/placeholderIcon.png"
       />
     </LayoutGroup>
+    <Timer
+      id="clockTimer"
+      repeat="true"
+      duration="60"
+    />
   </children>
 </component>

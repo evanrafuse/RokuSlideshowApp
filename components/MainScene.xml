@@ -3,17 +3,16 @@
 <component name="MainScene" extends="Scene">
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
   <interface>
-    <field id="playSlides" type="bool" value="true"/>
   </interface>
   <children>
-    <Slider
-      translation="[0,0]"
-      id="slider"
-    />
     <BottomBar
       translation="[0,640]"
       id="bottomBar"
       layoutDirection="horiz"
+    />
+    <Slider
+      translation="[0,0]"
+      id="slider"
     />
     <RefreshOverlay
       id="refreshOverlay"
@@ -37,9 +36,9 @@
     />
     </Animation>
     <Timer
-      id="slideTimer"
+      id="refreshTimer"
       repeat="true"
-      duration="2"
+      duration="1800"
     />
   </children>
 </component>

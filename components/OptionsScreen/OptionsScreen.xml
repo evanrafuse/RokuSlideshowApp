@@ -41,7 +41,7 @@
           <ContentNode role="content">
             <ContentNode title="Hockey" />
             <ContentNode title="Canada" />
-            <ContentNode title="Dachsund" />
+            <ContentNode title="Dachsunds" />
           </ContentNode>
         </RadioButtonList>
       </Group>

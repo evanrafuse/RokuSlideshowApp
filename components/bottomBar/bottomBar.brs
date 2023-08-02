@@ -20,7 +20,15 @@ function init()
     }
   }
 
+  ' Slide Title
   m.titleLbl = m.top.FindNode("titleLbl")
+  m.titleLbl.drawingStyles = {
+    default: {
+      "fontUri": "pkg:/assets/fonts/Gotham-Bold.otf"
+      "fontSize":15
+      "color": "#FFFFFF"
+    }
+  }
 
   ' Weather Group
   m.weatherLbl = m.top.FindNode("weatherLbl")
@@ -35,6 +43,12 @@ function init()
   m.weatherTask = createObject("roSGNode", "restTask")
   m.weatherTask.observeField("response", "onWeatherResponse")
   m.weatherTask.request = {"url":url}
+  updateWeather()
+
+  m.clockTimer = m.top.FindNode("clockTimer")
+  m.clockTimer.ObserveField("fire", "clockPing")
+  m.clockTimer.control = "start"
+  clockPing()
 end function
 
 sub titleChanged(obj)
@@ -42,9 +56,11 @@ sub titleChanged(obj)
   m.titleLbl.text = title
 end sub
 
-sub updateTime(timeStrings)
-  m.dateLbl.text = timeStrings[0]
-  m.timeLbl.text = timeStrings[1]
+sub clockPing()
+  clock = CreateObject("roDateTime")
+  clock.ToLocalTime()
+  m.dateLbl.text = clock.asDateStringLoc("EEEE, MMMM d")
+  m.timeLbl.text = clock.asTimeStringLoc("h:mm a")
 end sub
 
 sub updateWeather()
@@ -59,4 +75,5 @@ sub onWeatherResponse(obj)
   icon = weatherData.weather[0].icon
   m.weatherLbl.text = temp + chr(10) + conditions
   m.weatherPoster.uri = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
+  m.top.weatherReady = true
 end sub
