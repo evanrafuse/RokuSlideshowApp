@@ -72,11 +72,19 @@ end sub
 ' Handles the response from the openWeather API
 sub onWeatherResponse(obj)
   response = obj.getData()
-  weatherData = ParseJson(response)
-  temp = Str(Cint(weatherData.main.temp)) + Chr(176) + "C"
-  conditions = weatherData.weather[0].main
-  icon = weatherData.weather[0].icon
-  m.weatherLbl.text = temp + chr(10) + conditions
-  m.weatherPoster.uri = "https://openweathermap.org/img/wn/" + icon + "@2x.png" 'Shows the weather icon
+  if invalid <> response
+    weatherData = ParseJson(response)
+    if invalid <> weatherData.error ' Handles errors in API response
+      m.weatherLbl.text = "WEATHER DATA" + chr(10) + "UNAVAILABLE"
+    else
+      temp = Str(Cint(weatherData.main.temp)) + Chr(176) + "C"
+      conditions = weatherData.weather[0].main
+      icon = weatherData.weather[0].icon
+      m.weatherLbl.text = temp + chr(10) + conditions
+      m.weatherPoster.uri = "https://openweathermap.org/img/wn/" + icon + "@2x.png" 'Shows the weather icon
+    end if
+  else ' Handles errors in API response
+    m.weatherLbl.text = "WEATHER DATA" + chr(10) + "UNAVAILABLE"
+  end if
   m.top.weatherReady = true 'Hides the refreshOverlay when weather data is ready
 end sub

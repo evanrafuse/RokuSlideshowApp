@@ -14,15 +14,17 @@ sub makeRequest()
   while true
     msg = wait(0, m.messagePort)
     if "roUrlEvent" = type(msg)
-      if (msg.getresponsecode() > 0 and  msg.getresponsecode() < 400)
-        if (msg.getresponsecode() > 300)
-          ? "Redirected!"
+      code = msg.getresponsecode()
+      if (code > 0 and  code < 400)
+        if (code > 300)
+          ? "restTask Redirected!"
         end if
         m.top.response = msg.getstring()
         urlTransfer.asynccancel()
       else
-        ? "request error: "; msg.getfailurereason();" "; msg.getresponsecode();
-        m.top.response = ""
+        ? "API Request Error: "; msg.getfailurereason();" "; code;
+        error = FormatJson({"error":msg.getfailurereason()})
+        m.top.response = error
         urlTransfer.asynccancel()
       end if
     else if "request" = msg.getField()

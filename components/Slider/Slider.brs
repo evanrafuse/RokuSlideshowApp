@@ -1,5 +1,5 @@
 function init()
-  m.urlbase = "https://api.unsplash.com/photos/random?count=10&orientation=landscape&query=" 
+  m.urlbase = "https://api.unsplash.com/photos/random?count=10&orientation=landscape&query="
   m.apiKey = "&client_id=" + ParseJson(ReadAsciiFile("pkg:/assets/api_keys.json")).keys.unsplash
   m.photoTask = createObject("roSGNode", "restTask") 'Task for retrieving photos
   m.photoTask.observeField("response", "onUnsplashResponse") 'Handles photo API response
@@ -36,17 +36,23 @@ sub onUnsplashResponse(obj)
     end for
   end if
   m.slides = []
-  for each photo in photoData 'Extracts the useful data for each photo and stores in an array
-    if invalid <> photo.description 'The descriptions are often null, but the alt never is
-      desc = photo.description
-    else
-      desc = photo.alt_description
+  if "roAssociativeArray" = Type(photoData) ' This is because the API calls come in as different data formats, it's annoying but they're free
+    if invalid <> photoData.error 'Checking for errors in the API response
+      m.slides.push({"title": photoData.error, "filename": "pkg:/assets/images/errorSlide.png"}) ' Show the error slide and give the user feedback
     end if
-    title = desc + chr(10) + photo.user.name
-    url = photo.urls.regular
-    photoParsed = {"title": title, "filename": url}
-    m.slides.push(photoParsed)
-  end for
+  else
+    for each photo in photoData 'Extracts the useful data for each photo and stores in an array
+      if invalid <> photo.description 'The descriptions are often null, but the alt never is
+        desc = photo.description
+      else
+        desc = photo.alt_description
+      end if
+      title = desc + chr(10) + photo.user.name
+      url = photo.urls.regular
+      photoParsed = {"title": title, "filename": url}
+      m.slides.push(photoParsed)
+    end for
+  end if
 
   m.slideCount = m.slides.count() - 1 'Important for the animation and navigation to loop to beginning/end
 
