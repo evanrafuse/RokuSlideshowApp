@@ -45,7 +45,7 @@ end sub
 'Updates the length of time slides are shown
 sub setSpeed(obj)
   speed = obj.getData()
-  m.slideTimer.duration=speed
+  m.slider.slideSpeed = speed
 end sub
 
 'Updates oberved field, starting a process to retrieve the new category of photos
