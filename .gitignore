@@ -2,4 +2,3 @@ dist
 out
 .env
 .DS_store
-api_keys.json

@@ -1,6 +1,6 @@
 function init()
   m.urlbase = "https://api.unsplash.com/photos/random?count=10&orientation=landscape&query="
-  m.apiKey = "&client_id=" + ParseJson(ReadAsciiFile("pkg:/assets/api_keys.json")).keys.unsplash
+  m.apiKey = "&client_id=" + ParseJson(ReadAsciiFile("pkg:/api_keys.json")).keys.unsplash
   m.photoTask = createObject("roSGNode", "restTask") 'Task for retrieving photos
   m.photoTask.observeField("response", "onUnsplashResponse") 'Handles photo API response
   m.top.observeField("category", "retrievePhotos") 'Retrieves photos again whenever the category is changed

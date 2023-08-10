@@ -1,5 +1,5 @@
 function init()
-  weatherKey = ParseJson(ReadAsciiFile("pkg:/assets/api_keys.json")).keys.openWeather
+  weatherKey = ParseJson(ReadAsciiFile("pkg:/api_keys.json")).keys.openWeather
   url = "https://api.openweathermap.org/data/2.5/weather?lat=45.3755&lon=-63.2602&appid=" + weatherKey + "&units=metric"
 
   ' Clock Group Styles

@@ -3,6 +3,7 @@
       "components/**/*",
       "assets/**/**/*",
       "source/**/*",
+      "api_keys.json",
       "manifest"
   ]
 }
