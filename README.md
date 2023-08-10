@@ -1,2 +1,8 @@
 # Roku Slideshow App
 This app was built as a learning exercise for me. It demonstrates tasks, observers, animations, the event loop, and some front end UI stuff too. Originally it was an idea for my Lobby TV at my side job at Dal, to show announcements, reminders and resources for students. This version is slightly different, it's just a dynamic slideshow app (I'm too lazy to change the splash images). All pictures come from Unsplash's API, and artist/photographer credit is shown below the picture title where possible. The weather data is coming from the free OpenWeather API. Both APIs require an API key which you can get by signing up on their site. You'll have to put both in the api_keys.json file. The app will launch without them, but it will show errors.
+
+*To Do*
+- When you launch the app, sometimes it still hides the slider before the image has loaded. I think it’s because the images are so big. I’ve tried to reduce the size of the images but the API doesn’t play along for some reason.
+- When you navigate to options and back to the slider screen, back press will no longer exit the app. Why is this? Back press works to exit until this point. It’s as though setting focus to another node breaks it, but I set focus back to MainScene when I come back, so it’s strange.
+- When you navigate forward or back on the slider, it should start the timer over. It’s kind of gross when you slide left and the slider slides left half a second later.
+- Same thing with the first load and the options screen. The timer shouldn’t start until you can see the screen, so it doesn’t flicker or slide right away.
