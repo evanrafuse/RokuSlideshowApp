@@ -59,12 +59,31 @@ sub animateOptions()
   if m.optionsScreen.optionsShowing
     m.optionsSlideAnim.keyValue = [[0,720],[0,0]]
     m.optionsAnim.control = "start"
-    m.optionsScreen.callFunc("setFocus")
+    m.optionsScreen.callFunc("setFocus", true)
   else
     m.optionsSlideAnim.keyValue = [[0,0],[0,720]]
     m.optionsAnim.control = "start"
+    m.optionsScreen.callFunc("setFocus", false)
     m.top.setFocus(true)
   end if
+end sub
+
+sub showExitDialog()
+  m.exitDialog = createObject("roSGNode", "Dialog")
+  m.exitDialog.backgroundUri = ""
+  m.exitDialog.title = "Back Button Pressed"
+  m.exitDialog.message = "Are you sure you want to exit?"
+  m.exitDialog.buttons = ["Exit", "Cancel"]
+  m.exitDialog.ObserveFieldScoped("buttonSelected", "handleExitDialog")
+  m.top.dialog = m.exitDialog
+end sub
+
+sub handleExitDialog(event)
+  btnIndex = event.getData()
+  if 0 = btnIndex
+    m.top.closeApp = true
+  end if
+  m.exitDialog.close = true
 end sub
 
 function OnKeyEvent(key, press) as Boolean
@@ -78,6 +97,9 @@ function OnKeyEvent(key, press) as Boolean
       m.slider.sliderRunning = NOT m.slider.sliderRunning 'Pause slideshow
     else if "options" = key or "down" = key
       m.optionsScreen.optionsShowing = NOT m.optionsScreen.optionsShowing 'Show Options Screen
+    else if "back" = key
+      showExitDialog()
+      result = true
     end if
   end if
   return result

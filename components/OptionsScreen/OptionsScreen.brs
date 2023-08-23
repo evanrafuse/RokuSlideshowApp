@@ -14,8 +14,8 @@ function init()
 end function
 
 ' Give focus to the top level menu
-sub setFocus()
-  m.buttonList.setFocus(true)
+sub setFocus(focused)
+  m.buttonList.setFocus(focused)
 end sub
 
 ' Update which submenu is visible on the right

@@ -3,6 +3,7 @@
 <component name="MainScene" extends="Scene">
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs"/>
   <interface>
+    <field id="closeApp" type="bool" value="false" />
   </interface>
   <children>
     <BottomBar

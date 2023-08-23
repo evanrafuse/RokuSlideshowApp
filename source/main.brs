@@ -1,20 +1,26 @@
 sub Main()
-    showChannelSGScreen()
-    ? "IN MAIN: Starting App"
-end sub
-
-sub showChannelSGScreen()
+    ' showChannelSGScreen()
   screen = CreateObject("roSGScreen")
-  m.port = CreateObject("roMessagePort")
-  screen.setMessagePort(m.port)
+  port = CreateObject("roMessagePort")
+  input = CreateObject("roInput")
+  screen.setMessagePort(port)
+  input.setMessagePort(port)
   scene = screen.CreateScene("MainScene")
   screen.show()
 
+  scene.observeField("closeApp", port)
+
   while(true)
-    msg = wait(0, m.port)
+    msg = wait(0, port)
     msgType = type(msg)
-    if msgType = "roSGScreenEvent"
-        if msg.isScreenClosed() then return
+    if "roSGNodeEvent" = msgType
+      msgField = msg.GetField()
+      msgData = msg.getData()
+      if "closeApp" = msgField AND true = msgData
+        return
+      end if
+    else if msgType = "roSGScreenEvent"
+      if msg.isScreenClosed() then return
     end if
   end while
 end sub
